@@ -1,21 +1,21 @@
 require 'rake'
 
-require ::File.expand_path('../todoolittle', __FILE__)
+require ::File.expand_path('../runner', __FILE__)
 
 # Include all of ActiveSupport's core class extensions, e.g., String#camelize
 require 'active_support/core_ext'
 
 namespace :db do
-  desc "Create the database todolittle"
+  desc "Create the database point_system"
   task :create do
-    puts "Creating database at todolittle if it doesn't exist..."
-    exec("touch db/todoolittle.sqlite3")
+    puts "Creating database at point_system if it doesn't exist..."
+    exec("touch db/point_system.sqlite3")
   end
 
-  desc "Drop the database todolittle"
+  desc "Drop the database point_system"
   task :drop do
-    puts "Dropping database todolittle..."
-    exec("rm db/todoolittle.sqlite3")
+    puts "Dropping database point_system..."
+    exec("rm db/point_system.sqlite3")
   end
 
   desc "Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."

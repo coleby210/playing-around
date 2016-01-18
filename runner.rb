@@ -8,9 +8,9 @@ APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 # Configure the database
 database_config = { :adapter  =>  "sqlite3",
-                    :database => "#{APP_ROOT}/db/todoolittle.sqlite3" }
+                    :database => "#{APP_ROOT}/db/point_system.sqlite3" }
 
 ActiveRecord::Base.establish_connection(database_config)
 
-require_relative 'controllers/todos'
-require_relative 'models/todo'
+require_relative 'controllers/points'
+require_relative 'models/point'

@@ -1,12 +1,18 @@
-<h1>Things to Do</h1>
+<h1>Ares Point System - Work in Progress</h1>
 
-<% @todos.each do |todo| %>
+<p><b>Username : Current Points</b></p>
+<% @points.each do |point| %>
   <div>
-    <%= todo.description %>
+    <%= point.name + " : " + point.value.to_s %>
   </div>
 <% end %>
-
-<form action="/todos" method="post">
-  <input type="text" name="description">
+<br>
+<form action="/" method="post">
+  <input type="text" name="name">
+  <input type="text" name="value">
   <input type="submit">
+</form>
+
+<form action="/delete_all" method="post">
+  <p>Delete All: <input type="submit"></p>
 </form>

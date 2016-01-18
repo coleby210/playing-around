@@ -4,17 +4,21 @@ get '/' do
 end
 
 post '/' do
-  if Point.exists?(name: params[:name])
-    object = Point.where(name: params[:name])
+  params.each_pair do |param, user|
+    object = Point.where(name: user)
     id = object[0].id
-    Point.update(id, value: params[:value])
-  else
-    Point.create(name: params[:name], value: params[:value])
+    value = object[0].value
+    Point.update(id, value: (100 + value))
   end
   redirect '/'
 end
 
 post '/delete_all' do
   Point.delete(Point.all)
+  redirect '/'
+end
+
+post '/add_member' do
+  Point.create(name: params[:name], value: 100)
   redirect '/'
 end

@@ -6,10 +6,18 @@
     <%= point.name + " : " + point.value.to_s %>
   </div>
 <% end %>
-<br>
+
+<h4>Who needs points?</h4>
 <form action="/" method="post">
+  <% @points.each do |point| %>
+    <input type="checkbox" name="name" value=<%= point.name %>><%= point.name %><br>
+  <% end %>
+  <input type="submit">
+</form>
+
+<h4>Add a new member:</h4>
+<form action="/add_member" method="post">
   <input type="text" name="name">
-  <input type="text" name="value">
   <input type="submit">
 </form>
 

@@ -10,7 +10,7 @@
 <h4>Who needs points?</h4>
 <form action="/" method="post">
   <% @points.each do |point| %>
-    <input type="checkbox" name="name" value=<%= point.name %>><%= point.name %><br>
+    <input type="checkbox" name="names[]" value=<%= point.name %>><%= point.name %><br>
   <% end %>
   <input type="submit">
 </form>

@@ -4,7 +4,7 @@ get '/' do
 end
 
 post '/' do
-  params.each_pair do |param, user|
+  params[:names].each do |user|
     object = Point.where(name: user)
     id = object[0].id
     value = object[0].value

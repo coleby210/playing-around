@@ -1,0 +1,48 @@
+<center><h1>Ares Point System - Work in Progress</h1><center>
+
+<p align="left"><b>Username : Current Members</b></p>
+<% @members.each do |member| %>
+  <div align="left">
+    <%= member.username + " : " + member.current_points.to_s %>
+  </div>
+<% end %>
+
+<center>
+<h4>Add some points:</h4>
+<form action="/" method="post">
+  <p><b>What boss was killed?</b></p>
+  <select name="boss">
+    <% @bosses.each do |boss| %>
+      <option value=<%= boss.name %>><%= boss.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <p><b>Who was there?</b></p>
+  <% @members.each do |member| %>
+    <input type="checkbox" name="names[]" value=<%= member.username %>><%= member.username %><br>
+  <% end %>
+  <p><b>When was the boss killed? (this should be a calendar)</b></p>
+  <input type="text" name="killtime">
+  <p><b>What dropped?</b></p>
+  <input type="text" name="drop">
+  <p>Who received it?</p>
+  <input type="text" name="winner">
+  <p>How many points did they use?</p>
+  <input type="text" name="point_cost"><br>
+  <input type="submit">
+</form>
+</center>
+
+<div align="left">
+<h4>Add a new member:</h4>
+<form action="/add_member" method="post">
+  <input type="text" name="name">
+  <input type="submit">
+</form>
+</div>
+
+<div align="left">
+<form action="/delete_all" method="post">
+  <p>Delete All: <input type="submit"></p>
+</form>
+</div>

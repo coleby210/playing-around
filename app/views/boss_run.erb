@@ -5,7 +5,7 @@
   <p><b>What boss was killed?</b></p>
   <select name="boss">
     <% @bosses.each do |boss| %>
-      <option value=<%= boss.name %>><%= boss.name %></option>
+      <option value="<%= boss.name %>"><%= boss.name %></option>
     <% end %>
   </select>
   <br>

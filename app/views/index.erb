@@ -1,7 +1,7 @@
 <center><p><b>Username : Current Members</b></p>
 <% @members.each do |member| %>
   <div>
-    <%= member.username + " : " + member.current_points.to_s %>
+    <%= member.username.capitalize + " : " + member.current_points.to_s %>
   </div>
 <% end %>
 </center>

@@ -3,7 +3,6 @@ get '/' do
     @members = Member.all
     @members = @members.sort_by &:current_points
     @members.reverse!
-    @bosses = Boss.all
     erb :index
   else
     erb :"/login"
@@ -38,7 +37,7 @@ post '/delete_all' do
 end
 
 post '/add_member' do
-  person = Member.create(username: params[:username], password_hash: params[:password], rank: params[:rank])
+  person = Member.create(username: params[:username].downcase, password_hash: params[:password], rank: params[:rank])
   person.save
   redirect '/'
 end

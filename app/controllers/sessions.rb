@@ -3,8 +3,7 @@ get "/sessions/new" do
 end
 
 post "/sessions" do
-  member = Member.find_by(username: params[:user][:username])
-  puts member
+  member = Member.find_by(username: params[:user][:username].downcase)
   if member && member.password == params[:user][:password]
     login(member)
     redirect "/"

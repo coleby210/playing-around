@@ -1,1 +1,1 @@
-web: bundle exec thin -R config.ru start -p $PORT $RACK_ENV
+web: bundle exec thin -R config.ru start $PORT $RACK_ENV

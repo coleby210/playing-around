@@ -3,7 +3,8 @@ class CreateRuns < ActiveRecord::Migration
     create_table :runs do |t|
       t.integer :boss_id
       t.integer :drop_id
-      t.datetime :time_killed
+      t.string :time
+      t.string :date
 
       t.timestamps
     end

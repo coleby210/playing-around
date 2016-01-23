@@ -1,0 +1,70 @@
+<% if admin? %>
+<center>
+<div>
+<h4>Add a new member:</h4>
+<form action="/add_member" method="POST">
+  <input type="text" name="username">
+  <input type="password" name="password">
+  <select name="rank">
+    <option value="Member">Member</option>
+    <option value="Council">Council</option>
+    <option value="Admin">Admin</option>
+  </select>
+  <input type="submit" value="Add member">
+</form>
+</div>
+
+<div>
+<h4>Delete a member:</h4>
+<form action="/delete_member" method="POST">
+  <select name="member">
+    <% @members.each do |member| %>
+      <option value=<%= member.username %>><%= member.username %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Delete">
+</form>
+</div>
+
+<div>
+<form action="/delete_all" method="POST">
+  <p>Delete All: <input type="submit" value="Delete All"></p>
+</form>
+</div>
+
+<div>
+<h4>Manually update points</h4>
+<form action="/update_points" method="POST">
+  <p>User:
+    <select name="member">
+      <% @members.each do |member| %>
+        <option value=<%= member.username %>><%= member.username %></option>
+      <% end %>
+    </select>
+    <input type="text" name="points" placeholder="Enter new points value">
+    <input type="submit" value="Update Member">
+  </p>
+</form>
+</div>
+
+<div>
+<h4>Update User's Rank</h4>
+<form action="/update_rank" method="POST">
+<p>User:
+  <select name="member">
+    <% @members.each do |member| %>
+      <option value=<%= member.username %>><%= member.username %></option>
+    <% end %>
+   </select>
+   Rank:
+  <select name="rank">
+    <option value="Member">Member</option>
+    <option value="Council">Council</option>
+    <option value="Admin">Admin</option>
+  </select>
+  <input type="submit" value="Update Rank">
+</p>
+</form>
+</div>
+</center>
+<% end %>

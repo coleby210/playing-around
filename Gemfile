@@ -8,7 +8,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 
 # Use Thin for our web server
-# gem 'thin'
+gem 'thin'
 
 gem 'activesupport', '~>4.2'
 gem 'activerecord', '~>4.2'

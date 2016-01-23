@@ -1,7 +1,8 @@
 require "faker"
 
 10.times do
-  Member.create(username: Faker::Internet.user_name, password: Faker::Internet.password(8), rank: "Member", current_points: 0)
+  you = Member.create({username: Faker::Internet.user_name, password_hash: Faker::Internet.password(8)})
+  you.save
 end
 
 Boss.create(name: "Behemoth")

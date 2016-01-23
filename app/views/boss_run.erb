@@ -1,0 +1,32 @@
+<% if council? %>
+<center>
+<h4>Add some points:</h4>
+<form action="/" method="POST">
+  <p><b>What boss was killed?</b></p>
+  <select name="boss">
+    <% @bosses.each do |boss| %>
+      <option value=<%= boss.name %>><%= boss.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <p><b>Who was there?</b></p>
+  <% @members.each do |member| %>
+    <input type="checkbox" name="names[]" value=<%= member.username %>><%= member.username %><br>
+  <% end %>
+  <p><b>When was the boss killed? (TimeZone GMT-8)</b></p>
+  <input type="date" name="date"><input type="time" name="time">
+  <p><b>What dropped?</b></p>
+  <input type="text" name="item">
+  <p><b>Who received it?</b></p>
+  <select name="winner">
+        <option value="NULL"></option>
+      <% @members.each do |member| %>
+        <option value=<%= member.username %>><%= member.username %></option>
+      <% end %>
+  </select>
+  <p><b>How many points did they use?</b></p>
+  <input type="text" name="point_cost"><br>
+  <input type="submit" value="Submit Boss Run">
+</form>
+</center>
+<% end %>

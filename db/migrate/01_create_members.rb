@@ -3,7 +3,7 @@ class CreateMembers < ActiveRecord::Migration
     create_table :members do |t|
       t.string :username
       t.string :password
-      t.string :rank
+      t.string :rank, default: "Member"
       t.integer :current_points
       t.boolean :daily_point_bonus, default: false
 

@@ -1,4 +1,10 @@
 <center><h1>Ares Point System - Work in Progress</h1><center>
+<navbar>
+  <a href="/">Home</a>
+  <a href="/">Home 2</a>
+  <a href="/">Home 3</a>
+  <a href="/">Home 4</a>
+</navbar>
 
 <p align="left"><b>Username : Current Members</b></p>
 <% @members.each do |member| %>
@@ -9,7 +15,7 @@
 
 <center>
 <h4>Add some points:</h4>
-<form action="/" method="post">
+<form action="/" method="POST">
   <p><b>What boss was killed?</b></p>
   <select name="boss">
     <% @bosses.each do |boss| %>
@@ -21,28 +27,79 @@
   <% @members.each do |member| %>
     <input type="checkbox" name="names[]" value=<%= member.username %>><%= member.username %><br>
   <% end %>
-  <p><b>When was the boss killed? (this should be a calendar)</b></p>
-  <input type="text" name="killtime">
+  <p><b>When was the boss killed? (TimeZone GMT-8)</b></p>
+  <input type="date" name="kill_date"><input type="time" name="kill_time">
   <p><b>What dropped?</b></p>
   <input type="text" name="drop">
-  <p>Who received it?</p>
+  <p><b>Who received it?</b></p>
   <input type="text" name="winner">
-  <p>How many points did they use?</p>
+  <p><b>How many points did they use?</b></p>
   <input type="text" name="point_cost"><br>
-  <input type="submit">
+  <input type="submit" value="Submit Boss Run">
 </form>
 </center>
 
 <div align="left">
 <h4>Add a new member:</h4>
-<form action="/add_member" method="post">
+<form action="/add_member" method="POST">
   <input type="text" name="name">
-  <input type="submit">
+  <input type="password" name="password">
+  <select name="rank">
+    <option value="Member">Member</option>
+    <option value="Council">Council</option>
+    <option value="Admin">Admin</option>
+  </select>
+  <input type="submit" value="Add member">
 </form>
 </div>
 
 <div align="left">
-<form action="/delete_all" method="post">
-  <p>Delete All: <input type="submit"></p>
+<h4>Delete a member:</h4>
+<form action="/delete_member" method="POST">
+  <select name="member">
+    <% @members.each do |member| %>
+      <option value=<%= member.username %>><%= member.username %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Delete">
 </form>
 </div>
+
+<div align="left">
+<form action="/delete_all" method="POST">
+  <p>Delete All: <input type="submit" value="Delete All"></p>
+</form>
+</div>
+
+<div align="left">
+<h4>Manually update points</h4>
+<form action="/update_points" method="POST">
+  <p>User:
+    <select name="member">
+      <% @members.each do |member| %>
+        <option value=<%= member.username %>><%= member.username %></option>
+      <% end %>
+    </select>
+    <input type="text" name="points" placeholder="Enter new points value">
+    <input type="submit" value="Update Member">
+  </p>
+</form>
+
+<div align="left">
+<h4>Update User's Rank</h4>
+<form action="/update_rank" method="POST">
+<p>User:
+  <select name="member">
+    <% @members.each do |member| %>
+      <option value=<%= member.username %>><%= member.username %></option>
+    <% end %>
+   </select>
+   Rank:
+  <select name="rank">
+    <option value="Member">Member</option>
+    <option value="Council">Council</option>
+    <option value="Admin">Admin</option>
+  </select>
+  <input type="submit" value="Update Rank">
+</p>
+</form>

@@ -7,13 +7,14 @@ get '/' do
 end
 
 post '/' do
+  boss = Boss.where(name: params[:boss])
   params[:names].each do |user|
     object = Member.where(username: user)
-    id = object[0].id
-    value = object[0].current_points
+    id = object.first.id
+    value = object.first.current_points
     Member.update(id, current_points: (100 + value))
   end
-  boss = Boss.where(name: params[:boss])
+  #Add logging functionality
   redirect '/'
 end
 
@@ -24,5 +25,25 @@ end
 
 post '/add_member' do
   Member.create(username: params[:name], current_points: 0)
+  redirect '/'
+end
+
+post '/delete_member' do
+  member = Member.where(username: params[:member])
+  Member.delete(member)
+  redirect '/'
+end
+
+post '/update_points' do
+  member = Member.where(username: params[:member])
+  id = member.first.id
+  Member.update(id, current_points: params[:points])
+  redirect '/'
+end
+
+post '/update_rank' do
+  member = Member.where(username: params[:member])
+  id = member.first.id
+  Member.update(id, rank: params[:rank])
   redirect '/'
 end

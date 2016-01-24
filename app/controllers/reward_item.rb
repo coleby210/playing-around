@@ -12,10 +12,13 @@ end
 
 post "/reward_item" do
   if council?
-    member = Member.where(username: params[:member])
+    member = Member.where(username: params[:member]).first
+    points_value = member.current_points
     run = Run.find(params[:run_id])
-    run.winner = member.first
+    run.winner = member
     run.save
+    Member.update(member.id, current_points: (points_value - params[:points].to_i))
+
     redirect "/reward_item"
   else
     erb :"/login"

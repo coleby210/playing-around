@@ -1,12 +1,12 @@
 <center>
-  <table class="table table-hover width80">
+  <table class="table table-hover width80 center">
     <h3>Log of Every Boss Run</h3>
     <tr class="table_header">
       <td>Run ID</td>
       <td>Boss Killed</td>
+      <td>Party Size</td>
       <td>Item Dropped</td>
       <td>Item Winner</td>
-      <td>Party Size</td>
       <td>Date</td>
       <td>Time (GMT -8)</td>
     </tr>
@@ -14,6 +14,7 @@
       <tr>
         <td><%= run.id.to_s %></td>
         <td><%= run.boss.name %></td>
+        <td><%= @parties.where(run_id: run.id).length %></td>
         <% if run.item.name != "" %>
           <td><%= run.item.name.capitalize %></td>
         <% else %>
@@ -28,7 +29,6 @@
           <td>Unclaimed</td>
         <% end %>
         <% end %>
-        <td><%= @parties.where(run_id: run.id).length %></td>
         <td><%= run.date.to_s %></td>
         <td><%= run.time.to_s %></td>
       </tr>

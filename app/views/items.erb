@@ -12,13 +12,13 @@
     </tr>
     <% @runs.reverse.each do |run| %>
     <% if run.winner.nil? && run.item.name != "" %>
-      <tr class="success">
-        <td><%= run.id.to_s %></td>
-        <td><%= run.boss.name %></td>
-        <td><%= run.item.name.capitalize %></td>
-        <td>Unclaimed</td>
-        <td><%= run.date.to_s %></td>
-        <td><%= run.time.to_s %></td>
+      <tr>
+        <td class="bg-primary"><b><%= run.id.to_s %></b></td>
+        <td class="bg-info"><%= run.boss.name %></td>
+        <td class="bg-success"><%= run.item.name.capitalize %></td>
+        <td class="bg-danger">Unclaimed</td>
+        <td class="bg-info"><%= run.date.to_s %></td>
+        <td class="bg-info"><%= run.time.to_s %></td>
       </tr>
       <% end %>
     <% end %>

@@ -1,63 +1,60 @@
 <% if admin? %>
+<br>
 <center>
+<h3>Admin Powers</h3>
 <div>
 <h4>Add a new member:</h4>
 <form action="/add_member" method="POST">
-  <input type="text" name="username">
-  <input type="password" name="password">
-  <select name="rank">
+  <input class="form-control width15" type="text" name="username">
+  <input class="form-control width15" type="password" name="password">
+  <select class="form-control width10" name="rank">
     <option value="Member">Member</option>
     <option value="Council">Council</option>
     <option value="Admin">Admin</option>
   </select>
-  <input type="submit" value="Add member">
+  <input class="btn btn-success" type="submit" value="Add member">
 </form>
 </div>
 
 <div>
 <h4>Delete a member:</h4>
 <form action="/delete_member" method="POST">
-  <select name="member">
+  <select class="form-control width10" name="member">
     <% @members.each do |member| %>
       <option value=<%= member.username %>><%= member.username.capitalize %></option>
     <% end %>
   </select>
-  <input type="submit" value="Delete">
+  <input class="btn btn-danger" type="submit" value="Delete Member">
 </form>
 </div>
 
 <div>
 <h4>Manually update points</h4>
 <form action="/update_points" method="POST">
-  <p>User:
-    <select name="member">
+    <select class="form-control width10" name="member">
       <% @members.each do |member| %>
         <option value=<%= member.username %>><%= member.username.capitalize %></option>
       <% end %>
     </select>
-    <input type="text" name="points" placeholder="Enter new points value">
-    <input type="submit" value="Update Member">
-  </p>
+    <input class="form-control width15"   type="text" name="points" placeholder="Enter new points value">
+    <input class="btn btn-success" type="submit" value="Update Member">
 </form>
 </div>
 
 <div>
 <h4>Update User's Rank</h4>
 <form action="/update_rank" method="POST">
-<p>User:
-  <select name="member">
+  <select class="form-control width10" name="member">
     <% @members.each do |member| %>
       <option value=<%= member.username %>><%= member.username.capitalize %></option>
     <% end %>
    </select>
-   Rank:
-  <select name="rank">
+  <select class="form-control width10" name="rank">
     <option value="Member">Member</option>
     <option value="Council">Council</option>
     <option value="Admin">Admin</option>
   </select>
-  <input type="submit" value="Update Rank">
-</p>
+  <input class="btn btn-success" type="submit" value="Update Rank">
 </form>
 </div>
 </center>

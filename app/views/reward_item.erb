@@ -1,6 +1,6 @@
 <br>
 <center>
-  <table border="3">
+  <table class="table table-hover width80">
     <h3>Available Items</h3>
     <tr>
       <td>Run ID</td>
@@ -12,7 +12,7 @@
     </tr>
     <% @runs.reverse.each do |run| %>
     <% if run.winner.nil? && run.item.name != "" %>
-      <tr>
+      <tr class="success">
         <td><%= run.id.to_s %></td>
         <td><%= run.boss.name %></td>
         <td><%= run.item.name.capitalize %></td>
@@ -27,15 +27,14 @@
     <h3>Reward an item to a Player</h3>
     <form action="/reward_item" method="POST">
     <p>User:
-    <select name="member">
+    <select class="form-control width10" name="member">
       <% @members.each do |member| %>
         <option value=<%= member.username %>><%= member.username.capitalize %></option>
       <% end %>
     </select></p>
-    <p>
-    <input type="text" name="run_id" placeholder="Enter Run ID"></p>
-    <p><input type="text" name="points" placeholder="Enter Point Cost"></p>
-    <input type="submit" value="Reward Player">
+    <p><input class="form-control width20" type="text" name="run_id" placeholder="Enter Run ID"></p>
+    <p><input class="form-control width20" type="text" name="points" placeholder="Enter Point Cost"></p>
+    <input class="btn btn-success" type="submit" value="Reward Player">
   </p>
 </form>
   <% end %>

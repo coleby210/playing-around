@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/starter-template.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -18,24 +15,38 @@
   <title>Cole's Point System</title>
 </head>
 <body>
-  <center>
-    <h1>Cole's Point System - Work in Progress</h1>
-    <% if member? %>
-      <navbar>
-        <a href="/">Home</a>
-        <% if council? %><a href="/boss_run">Boss Run Entry</a><% end %>
-        <a href="/reward_item">Available Items</a>
-        <% if admin? %><a href="/admin">Admin Controls</a><% end %>
-        <a href="/boss_logs">Boss Logs</a>
-        <a href="/logout">Logout</a>
-      </navbar>
-    <% end %>
-  </center>
+<div class="container">
+    <nav class="navbar navbar-inverse navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand logo_pos">Cole's Point System</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav float_right">
+            <% if member? %>
+              <% if council? %><li><a href="/boss_run">Boss Run Entry</a></li><% end %>
+              <li><a href="/reward_item">Available Items</a></li>
+              <% if admin? %><li><a href="/admin">Admin Controls</a></li><% end %>
+              <li><a href="/boss_logs">Boss Logs</a></li>
+              <li ><a href="/logout">Logout</a></li>
+            <% end %>
+          </ul>
+        </div>
+    </nav>
   <%= yield %>
-  <footer>
-    <center>
-      <h1>Made by Cole</h1>
-    </center>
-  </footer>
+  </div>
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+body {
+  padding-top: 20px;
+}
+
+.padding {
+  padding-top: 10px;
+}
+
+.starter-template {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.width20 {
+  width: 20%;
+}
+
+.width5 {
+  width: 5%;
+}
+
+.width10 {
+  width: 10%;
+  display: inline-block;
+}
+
+.width15 {
+  width: 15%;
+  display: inline-block;
+}
+
+.width40 {
+  width: 40%;
+}
+
+.width80 {
+  width: 80%;
+}
+
+.logo_pos {
+  margin-left: 0.5em;
+}
+
+.float_right {
+  float: right;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  text-align: center;
+}
+
+.table_header {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nomargin {
+  margin: 0;
+}

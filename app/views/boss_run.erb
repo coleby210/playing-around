@@ -1,22 +1,33 @@
 <% if council? %>
+<br>
 <center>
-<h4>Add some points:</h4>
-<form action="/" method="POST">
-  <p><b>What boss was killed?</b></p>
-  <select name="boss">
+<h3>Add some points:</h3>
+<form class="padding" action="/" method="POST">
+  <p><b>What boss was killed?</b>
+  <select name="boss" class="form-control width20">
     <% @bosses.each do |boss| %>
       <option value="<%= boss.name %>"><%= boss.name %></option>
     <% end %>
   </select>
+  </p>
   <br>
-  <p><b>Who was there?</b></p>
+  <b>Who was there?</b>
+  <table class="table table-condensed width5">
   <% @members.each do |member| %>
-    <input type="checkbox" name="names[]" value=<%= member.username %>><%= member.username.capitalize %><br>
+    <tr>
+    <td>
+    <div class="checkbox nomargin">
+    <input type="checkbox" name="names[]" value=<%= member.username %>>
+    <%= member.username.capitalize %>
+    </div>
+    </td>
+    </tr>
   <% end %>
-  <p><b>When was the boss killed? (TimeZone GMT-8)</b></p>
-  <input type="date" name="date"><input type="time" name="time">
-  <p><b>What dropped?</b></p>
-  <input type="text" name="item"><br>
+  </table></p>
+  <p><b>When was the boss killed? (TimeZone GMT-8)</b><br>
+  <input class="date" type="date" name="date"><input class="time" type="time" name="time"></p>
+  <p><b>What dropped?</b><br>
+  <input class="form-control width20" type="text" name="item"></p>
   <input type="submit" value="Submit Boss Run">
 </form>
 </center>

@@ -6,6 +6,7 @@
       <td>Boss Killed</td>
       <td>Item Dropped</td>
       <td>Item Winner</td>
+      <td>Party Size</td>
       <td>Date</td>
       <td>Time (GMT -8)</td>
     </tr>
@@ -27,6 +28,7 @@
           <td>Unclaimed</td>
         <% end %>
         <% end %>
+        <td><%= @parties.where(run_id: run.id).length %></td>
         <td><%= run.date.to_s %></td>
         <td><%= run.time.to_s %></td>
       </tr>

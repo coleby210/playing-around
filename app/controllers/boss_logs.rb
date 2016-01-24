@@ -4,6 +4,7 @@ get '/boss_logs' do
     # @members = @members.sort_by &:current_points
     # @members.reverse!
     @runs = Run.all
+    @parties = Party.all
     erb :boss_logs
   else
     erb :"/login"

@@ -49,8 +49,12 @@ end
 
 post '/delete_member' do
   member = Member.where(username: params[:member])
-  Member.delete(member)
-  redirect '/'
+  if member.first.id == 1
+    redirect "/"
+  else
+    Member.delete(member)
+    redirect '/'
+  end
 end
 
 post '/update_points' do

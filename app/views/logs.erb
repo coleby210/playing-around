@@ -12,14 +12,12 @@
     </tr>
     <% @runs.reverse.each do |run| %>
       <tr>
-        <td class="bg-primary"><%= run.id.to_s %></td>
-        <td class="bg-danger"><%= run.boss.name %></td>
+        <td class="bg-primary"><b><%= run.id.to_s %></b></td>
+        <td class="bg-info"><%= run.boss.name %></td>
         <% if @parties.where(run_id: run.id).length <= 2 %>
           <td class="bg-danger"><%= @parties.where(run_id: run.id).length %></td>
-        <% elsif @parties.where(run_id: run.id).length <= 4 %>
+        <% elsif @parties.where(run_id: run.id).length <= 5 %>
           <td class="bg-warning"><%= @parties.where(run_id: run.id).length %></td>
-        <% elsif @parties.where(run_id: run.id).length <= 6 %>
-          <td class="bg-info"><%= @parties.where(run_id: run.id).length %></td>
         <% else %>
           <td class="bg-success"><%= @parties.where(run_id: run.id).length %></td>
         <% end %>

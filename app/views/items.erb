@@ -25,7 +25,7 @@
   </table>
     <% if council? %>
     <h3>Reward an item to a Player</h3>
-    <form action="/reward_item" method="POST">
+    <form action="/items" method="POST">
     <p>User:
     <select class="form-control width10" name="member">
       <% @members.each do |member| %>

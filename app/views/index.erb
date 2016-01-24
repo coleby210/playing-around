@@ -7,8 +7,8 @@
     </tr>
     <% @members.each do |member| %>
     <tr>
-      <td><%= member.username.capitalize %></td>
-      <td><%= member.current_points.to_s %></td>
+      <td class="bg-success"><%= member.username.capitalize %></td>
+      <td class="bg-info"><%= member.current_points.to_s %></td>
     </tr>
     <% end %>
   </table>

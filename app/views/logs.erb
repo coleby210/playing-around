@@ -12,16 +12,22 @@
     </tr>
     <% @runs.reverse.each do |run| %>
       <tr>
-        <td><%= run.id.to_s %></td>
-        <td><%= run.boss.name %></td>
-        <td><%= @parties.where(run_id: run.id).length %></td>
+        <td class="bg-primary"><%= run.id.to_s %></td>
+        <td class="bg-danger"><%= run.boss.name %></td>
+        <% if @parties.where(run_id: run.id).length <= 2 %>
+          <td class="bg-danger"><%= @parties.where(run_id: run.id).length %></td>
+        <% elsif @parties.where(run_id: run.id).length <= 5 %>
+          <td class="bg-warning"><%= @parties.where(run_id: run.id).length %></td>
+        <% else %>
+          <td class="bg-success"><%= @parties.where(run_id: run.id).length %></td>
+        <% end %>
         <% if run.item.name != "" %>
-          <td><%= run.item.name.capitalize %></td>
+          <td class="bg-success"><%= run.item.name.capitalize %></td>
         <% else %>
           <td>Nothing</td>
         <% end %>
         <% if run.winner %>
-          <td><%= run.winner.username.capitalize  %></td>
+          <td class="bg-success"><%= run.winner.username.capitalize  %></td>
         <% else %>
         <% if run.item.name == "" %>
           <td>No Item</td>
@@ -29,8 +35,8 @@
           <td>Unclaimed</td>
         <% end %>
         <% end %>
-        <td><%= run.date.to_s %></td>
-        <td><%= run.time.to_s %></td>
+        <td class="bg-info"><%= run.date.to_s %></td>
+        <td class="bg-info"><%= run.time.to_s %></td>
       </tr>
     <% end %>
   </table>

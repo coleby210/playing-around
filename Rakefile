@@ -128,3 +128,14 @@ desc 'Start IRB with application environment loaded'
 task "console" do
   exec "irb -r./config/environment"
 end
+
+desc "Reset Daily Point Bonus"
+task "daily_point_reset" do
+  Member.all.each do |mem|
+    mem.update(daily_point_bonus: true)
+  end
+end
+
+
+
+

@@ -26,7 +26,11 @@ post '/' do
     id = object.first.id
     value = object.first.current_points
     Party.create(run_id: run.id, member_id: id)
-    Member.update(id, current_points: (100 + value))
+    if object.first.daily_point_bonus
+      Member.update(id, current_points: (100 + value), daily_point_bonus: false)
+    else
+      Member.update(id, current_points: (10 + value))
+    end
   end
   #Add logging functionality
   redirect '/'

@@ -23,10 +23,10 @@
     <% if member? %>
       <navbar>
         <a href="/">Home</a>
-        <% if council? %><a href="/boss_run">Boss Run Entry</a>
-        <a href="/reward_item">Reward Item</a>
-        <% end %>
+        <% if council? %><a href="/boss_run">Boss Run Entry</a><% end %>
+        <a href="/reward_item">Available Items</a>
         <% if admin? %><a href="/admin">Admin Controls</a><% end %>
+        <a href="/boss_logs">Boss Logs</a>
         <a href="/logout">Logout</a>
       </navbar>
     <% end %>

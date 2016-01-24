@@ -1,9 +1,9 @@
 get "/boss_run" do
   if logged_in?
-    @members = Member.all
-    @members = @members.sort_by &:current_points
-    @members.reverse!
     if council?
+      @members = Member.all
+      @members = @members.sort_by &:current_points
+      @members.reverse!
       @bosses = Boss.all
       erb :boss_run
     else

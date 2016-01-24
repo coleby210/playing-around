@@ -1,7 +1,5 @@
 <br>
 <center>
-
-  <form>
   <table border="3">
     <h3>Available Items</h3>
     <tr>
@@ -13,7 +11,7 @@
       <td>Time (GMT -8)</td>
     </tr>
     <% @runs.reverse.each do |run| %>
-    <% if run.winner.nil? %>
+    <% if run.winner.nil? && run.item.name != "" %>
       <tr>
         <td><%= run.id.to_s %></td>
         <td><%= run.boss.name %></td>
@@ -25,4 +23,19 @@
       <% end %>
     <% end %>
   </table>
+    <% if council? %>
+    <h3>Reward an item to a Player</h3>
+    <form action="/reward_item" method="POST">
+    <p>User:
+    <select name="member">
+      <% @members.each do |member| %>
+        <option value=<%= member.username %>><%= member.username.capitalize %></option>
+      <% end %>
+    </select></p>
+    <p>
+    <input type="text" name="run_id" placeholder="Enter Run ID"></p>
+    <input type="submit" value="Reward Player">
+  </p>
+</form>
+  <% end %>
 </center>

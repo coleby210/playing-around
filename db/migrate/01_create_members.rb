@@ -5,7 +5,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :password_hash, null: false
       t.string :rank, default: "Member"
       t.integer :current_points, default: 0
-      t.boolean :daily_point_bonus, default: false
+      t.boolean :daily_point_bonus, default: true
 
       t.timestamps
     end

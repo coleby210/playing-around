@@ -19,7 +19,7 @@
         <% elsif @parties.where(run_id: run.id).length <= 4 %>
           <td class="bg-warning"><%= @parties.where(run_id: run.id).length %></td>
         <% elsif @parties.where(run_id: run.id).length <= 6 %>
-          <td class="bg-warning"><%= @parties.where(run_id: run.id).length %></td>
+          <td class="bg-info"><%= @parties.where(run_id: run.id).length %></td>
         <% else %>
           <td class="bg-success"><%= @parties.where(run_id: run.id).length %></td>
         <% end %>

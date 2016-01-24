@@ -1,26 +1,27 @@
-get '/reward_item' do
+get '/items' do
   if logged_in?
     @members = Member.all
     @members = @members.sort_by &:current_points
     @members.reverse!
     @runs = Run.all
-    erb :reward_item
+    erb :items
   else
-    erb :"/login"
+    erb :login
   end
 end
 
-post "/reward_item" do
+post "/items" do
   if council?
     member = Member.where(username: params[:member]).first
     points_value = member.current_points
     run = Run.find(params[:run_id])
     run.winner = member
+    run.drop.point_cost = params[:points]
     run.save
+    run.drop.save
     Member.update(member.id, current_points: (points_value - params[:points].to_i))
-
-    redirect "/reward_item"
+    redirect "/items"
   else
-    erb :"/login"
+    redirect "/"
   end
 end

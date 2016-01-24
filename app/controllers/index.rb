@@ -5,68 +5,6 @@ get '/' do
     @members.reverse!
     erb :index
   else
-    erb :"/login"
+    erb :login
   end
-end
-
-post '/' do
-  boss = Boss.where(name: params[:boss]).first
-  item = Item.create(name: params[:item])
-  # if params[:winner] != ""
-  #   winner = Member.where(username: params[:winner]).first
-  #   drop = Drop.create(item_id: item.id, winner_id: winner.id, point_cost: params[:point_cost])
-  #   Member.update(winner.id, current_points: (winner.current_points - params[:point_cost].to_i))
-  # else
-    drop = Drop.create(item_id: item.id)
-  # end
-    run = Run.create(boss_id: boss.id, drop_id: drop.id, date: params[:date], time: params[:time])
-
-  params[:names].each do |user|
-    object = Member.where(username: user)
-    id = object.first.id
-    value = object.first.current_points
-    Party.create(run_id: run.id, member_id: id)
-    if object.first.daily_point_bonus
-      Member.update(id, current_points: (100 + value), daily_point_bonus: false)
-    else
-      Member.update(id, current_points: (10 + value))
-    end
-  end
-  #Add logging functionality
-  redirect '/'
-end
-
-post '/delete_all' do
-  Member.delete(Member.all)
-  redirect '/'
-end
-
-post '/add_member' do
-  person = Member.create(username: params[:username].downcase, password_hash: params[:password], rank: params[:rank])
-  person.save
-  redirect '/'
-end
-
-post '/delete_member' do
-  member = Member.where(username: params[:member])
-  if member.first.id == 1
-    redirect "/"
-  else
-    Member.delete(member)
-    redirect '/'
-  end
-end
-
-post '/update_points' do
-  member = Member.where(username: params[:member])
-  id = member.first.id
-  Member.update(id, current_points: params[:points])
-  redirect '/'
-end
-
-post '/update_rank' do
-  member = Member.where(username: params[:member])
-  id = member.first.id
-  Member.update(id, rank: params[:rank])
-  redirect '/'
 end

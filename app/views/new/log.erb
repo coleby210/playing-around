@@ -1,7 +1,7 @@
 <% if council? %>
 <center>
 <h3>Add some points:</h3>
-<form class="padding" action="/" method="POST">
+<form class="padding" action="/logs" method="POST">
   <p><b>What boss was killed?</b>
   <select name="boss" class="form-control width20">
     <% @bosses.each do |boss| %>
@@ -27,7 +27,7 @@
   <input class="date" type="date" name="date"><input class="time" type="time" name="time"></p>
   <p><b>What dropped?</b><br>
   <input class="form-control width20" type="text" name="item"></p>
-  <input type="submit" value="Submit Boss Run">
+  <input class="btn btn-success" type="submit" value="Submit Boss Run">
 </form>
 </center>
 <% end %>

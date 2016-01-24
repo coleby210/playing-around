@@ -1,5 +1,5 @@
 get "/sessions/new" do
-  erb :"/login"
+  erb :login
 end
 
 post "/sessions" do
@@ -8,7 +8,7 @@ post "/sessions" do
     login(member)
     redirect "/"
   else
-    erb :"/login"
+    erb :login
   end
 end
 

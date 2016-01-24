@@ -1,0 +1,28 @@
+<br>
+<center>
+
+  <form>
+  <table border="3">
+    <h3>Available Items</h3>
+    <tr>
+      <td>Run ID</td>
+      <td>Boss Killed</td>
+      <td>Item Dropped</td>
+      <td>Item Winner</td>
+      <td>Date</td>
+      <td>Time (GMT -8)</td>
+    </tr>
+    <% @runs.reverse.each do |run| %>
+    <% if run.winner.nil? %>
+      <tr>
+        <td><%= run.id.to_s %></td>
+        <td><%= run.boss.name %></td>
+        <td><%= run.item.name.capitalize %></td>
+        <td>Unclaimed</td>
+        <td><%= run.date.to_s %></td>
+        <td><%= run.time.to_s %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+</center>

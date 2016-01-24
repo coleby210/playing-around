@@ -19,7 +19,7 @@
 <form action="/delete_member" method="POST">
   <select name="member">
     <% @members.each do |member| %>
-      <option value=<%= member.username %>><%= member.username %></option>
+      <option value=<%= member.username %>><%= member.username.capitalize %></option>
     <% end %>
   </select>
   <input type="submit" value="Delete">
@@ -38,7 +38,7 @@
   <p>User:
     <select name="member">
       <% @members.each do |member| %>
-        <option value=<%= member.username %>><%= member.username %></option>
+        <option value=<%= member.username %>><%= member.username.capitalize %></option>
       <% end %>
     </select>
     <input type="text" name="points" placeholder="Enter new points value">
@@ -53,7 +53,7 @@
 <p>User:
   <select name="member">
     <% @members.each do |member| %>
-      <option value=<%= member.username %>><%= member.username %></option>
+      <option value=<%= member.username %>><%= member.username.capitalize %></option>
     <% end %>
    </select>
    Rank:

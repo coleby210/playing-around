@@ -3,6 +3,8 @@ require "bcrypt"
 class Member < ActiveRecord::Base
   include BCrypt
 
+  belongs_to :drop, foreign_key: "winner_id"
+  has_one :drop
   validates :username, :uniqueness => true
 
   def self.create(hash = {})

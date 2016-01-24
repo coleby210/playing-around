@@ -11,16 +11,15 @@ end
 
 post '/' do
   boss = Boss.where(name: params[:boss]).first
-  puts boss
   item = Item.create(name: params[:item])
-  winner = Member.where(username: params[:winner]).first
-
-  drop = Drop.create(item_id: item.id, winner_id: winner.id, point_cost: params[:point_cost])
-  puts drop
-
-  run = Run.create(boss_id: boss.id, drop_id: drop.id, date: params[:date], time: params[:time])
-
-  Member.update(winner.id, current_points: (winner.current_points - params[:point_cost].to_i))
+  # if params[:winner] != ""
+  #   winner = Member.where(username: params[:winner]).first
+  #   drop = Drop.create(item_id: item.id, winner_id: winner.id, point_cost: params[:point_cost])
+  #   Member.update(winner.id, current_points: (winner.current_points - params[:point_cost].to_i))
+  # else
+    drop = Drop.create(item_id: item.id)
+  # end
+    run = Run.create(boss_id: boss.id, drop_id: drop.id, date: params[:date], time: params[:time])
 
   params[:names].each do |user|
     object = Member.where(username: user)

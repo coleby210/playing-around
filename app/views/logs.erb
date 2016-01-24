@@ -24,13 +24,13 @@
         <% if run.item.name != "" %>
           <td class="bg-success"><%= run.item.name.capitalize %></td>
         <% else %>
-          <td>Nothing</td>
+          <td class="bg-danger">Nothing</td>
         <% end %>
         <% if run.winner %>
           <td class="bg-success"><%= run.winner.username.capitalize  %></td>
         <% else %>
         <% if run.item.name == "" %>
-          <td>No Item</td>
+          <td class="bg-danger">No Item</td>
         <% else %>
           <td>Unclaimed</td>
         <% end %>

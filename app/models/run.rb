@@ -4,4 +4,9 @@ class Run < ActiveRecord::Base
   belongs_to :drop
   has_one :winner, through: :drop, class_name: "Member"
   has_one :item, through: :drop
+
+  validates :date, presence: true
+  validates :time, presence: true
+  validates :drop_id, presence: true
+  validates :boss_id, presence: true
 end

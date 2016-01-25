@@ -6,6 +6,8 @@ class Member < ActiveRecord::Base
   belongs_to :drop, foreign_key: "winner_id"
   has_one :drop
   validates :username, :uniqueness => true
+  validates :password_hash, presence: true
+  validates :current_points, numericality: { greater_than_or_equal_to: 0 }
 
   def self.create(hash = {})
     new_member = Member.new(hash)

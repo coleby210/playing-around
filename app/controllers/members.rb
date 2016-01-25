@@ -32,10 +32,13 @@ end
 put '/members/update' do
   member = Member.where(username: params[:member])
   id = member.first.id
-  if params[:points]
+  if params[:points] && (params[:points].to_i > 0)
     Member.update(id, current_points: params[:points])
+    redirect "/"
   elsif params[:rank]
     Member.update(id, rank: params[:rank])
+    redirect "/"
+  else
+    erb :error
   end
-  redirect '/'
 end

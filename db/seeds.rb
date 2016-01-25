@@ -5,7 +5,7 @@
 #   you.save
 # end
 
-you = Member.create(username: "cole", password_hash: "lol", rank: "Admin")
+you = Member.create(username: "cole", password_hash: "badass", rank: "Admin")
 you.save
 
 Boss.create(name: "Mountain Behemoth")

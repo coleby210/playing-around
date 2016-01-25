@@ -5,8 +5,8 @@
 <div>
 <h4>Add a new member:</h4>
 <form action="/members" method="POST">
-  <input class="form-control width15" type="text" name="username">
-  <input class="form-control width15" type="password" name="password">
+  <input class="form-control width15" type="text" name="username" placeholder="Username">
+  <input class="form-control width15" type="password" name="password" placeholder="Password">
   <select class="form-control width10" name="rank">
     <option value="Member">Member</option>
     <option value="Council">Council</option>
@@ -38,7 +38,7 @@
         <option value=<%= member.username %>><%= member.username.capitalize %></option>
       <% end %>
     </select>
-    <input class="form-control width15"   type="text" name="points" placeholder="Enter new points value">
+    <input class="form-control width15"   type="text" name="points" placeholder="New Points Value">
     <input class="btn btn-success" type="submit" value="Update Member">
 </form>
 </div>

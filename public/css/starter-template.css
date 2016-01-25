@@ -2,11 +2,16 @@ body {
   padding-top: 20px;
 }
 
+.margin20 {
+  margin-bottom: 20px;
+  display: block;
+}
 .padding {
   padding-top: 10px;
 }
 
 .starter-template {
+  margin-top: 20px;
   padding: 10px 15px;
   text-align: center;
 }

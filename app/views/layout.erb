@@ -11,10 +11,24 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
+  <script type="text/javascript">
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
+
+function display_ct() {
+var strcount
+var x = new Date()
+var x1=x.toUTCString();// changing the display to UTC string
+document.getElementById('ct').innerHTML = x1;
+tt=display_c();
+}
+</script>
 
   <title>Cole's Point System</title>
 </head>
-<body>
+<body onload=display_ct();>
 <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top margin20">
         <div class="navbar-header">

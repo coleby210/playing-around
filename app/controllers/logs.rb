@@ -25,22 +25,26 @@ get '/logs' do
 end
 
 post '/logs' do
-  boss = Boss.where(name: params[:boss]).first
-  item = Item.create(name: params[:item])
-  drop = Drop.create(item_id: item.id, point_cost: 0)
-  run = Run.create(boss_id: boss.id, drop_id: drop.id, date: params[:date], time: params[:time])
+  if params[:names]
+    boss = Boss.where(name: params[:boss]).first
+    item = Item.create(name: params[:item])
+    drop = Drop.create(item_id: item.id, point_cost: 0)
+    run = Run.create(boss_id: boss.id, drop_id: drop.id, date: params[:date], time: params[:time])
 
-  params[:names].each do |user|
-    object = Member.where(username: user)
-    id = object.first.id
-    value = object.first.current_points
-    Party.create(run_id: run.id, member_id: id)
-    if object.first.daily_point_bonus
-      Member.update(id, current_points: (100 + value), daily_point_bonus: false)
-    else
-      Member.update(id, current_points: (10 + value))
+    params[:names].each do |user|
+      object = Member.where(username: user)
+      id = object.first.id
+      value = object.first.current_points
+      Party.create(run_id: run.id, member_id: id)
+      if object.first.daily_point_bonus
+        Member.update(id, current_points: (100 + value), daily_point_bonus: false)
+      else
+        Member.update(id, current_points: (10 + value))
+      end
     end
+    redirect '/'
+  else
+    erb :error
   end
-  redirect '/'
 end
 

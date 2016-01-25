@@ -1,4 +1,4 @@
-helpers do
+  helpers do
 
   def login(user)
     session[:id] = user.id

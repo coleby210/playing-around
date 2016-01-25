@@ -7,7 +7,7 @@
 <form action="/members" method="POST">
   <input class="form-control width15" type="text" name="username" placeholder="Username">
   <input class="form-control width15" type="password" name="password" placeholder="Password">
-  <select class="form-control width10" name="rank">
+  <select class="form-control width15" name="rank">
     <option value="Member">Member</option>
     <option value="Council">Council</option>
     <option value="Admin">Admin</option>
@@ -20,7 +20,7 @@
 <h4>Delete a member:</h4>
 <form action="/members/" method="POST">
   <input type="hidden" name="_method" value="delete">
-  <select class="form-control width10" name="member">
+  <select class="form-control width15" name="member">
     <% @members.each do |member| %>
       <option value=<%= member.username %>><%= member.username.capitalize %></option>
     <% end %>
@@ -33,7 +33,7 @@
 <h4>Manually update points</h4>
 <form action="/members/update" method="POST">
   <input type="hidden" name="_method" value="put">
-    <select class="form-control width10" name="member">
+    <select class="form-control width15" name="member">
       <% @members.each do |member| %>
         <option value=<%= member.username %>><%= member.username.capitalize %></option>
       <% end %>
@@ -47,12 +47,12 @@
 <h4>Update User's Rank</h4>
 <form action="/members/update" method="POST">
   <input type="hidden" name="_method" value="put">
-  <select class="form-control width10" name="member">
+  <select class="form-control width15" name="member">
     <% @members.each do |member| %>
       <option value=<%= member.username %>><%= member.username.capitalize %></option>
     <% end %>
    </select>
-  <select class="form-control width10" name="rank">
+  <select class="form-control width15" name="rank">
     <option value="Member">Member</option>
     <option value="Council">Council</option>
     <option value="Admin">Admin</option>

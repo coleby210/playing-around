@@ -26,13 +26,13 @@
     <h3>Reward an item to a Player</h3>
     <form action="/items" method="POST">
     <p>User:
-    <select class="form-control width10" name="member">
+    <select class="form-control width15" name="member">
       <% @members.each do |member| %>
         <option value=<%= member.username %>><%= member.username.capitalize %></option>
       <% end %>
     </select></p>
-    <p><input class="form-control width20" type="text" name="run_id" placeholder="Enter Run ID"></p>
-    <p><input class="form-control width20" type="text" name="points" placeholder="Enter Point Cost"></p>
+    <p><input class="form-control width20" type="text" name="run_id" placeholder="Run ID"></p>
+    <p><input class="form-control width20" type="text" name="points" placeholder="Point Cost"></p>
     <input class="btn btn-success" type="submit" value="Reward Player">
   </p>
 </form>

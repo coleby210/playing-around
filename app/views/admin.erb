@@ -3,43 +3,36 @@
 <center>
 <h3>Admin Powers</h3>
 <div>
-<h4>Add a new member:</h4>
-<form action="/members" method="POST">
-  <input class="form-control width15" type="text" name="username" placeholder="Username">
-  <input class="form-control width15" type="password" name="password" placeholder="Password">
+<h4>Add a new member</h4>
+<form data-toggle="validator" role="form" action="/members" method="POST">
+<div class="form-group with-feedback">
+  <input class="form-control width15" type="text" name="username" placeholder="Username" data-error="Username Required" required>
+  <input class="form-control width15" type="password" name="password" placeholder="Password" data-error="Password Required" required>
   <select class="form-control width15" name="rank">
     <option value="Member">Member</option>
     <option value="Council">Council</option>
     <option value="Admin">Admin</option>
   </select>
   <input class="btn btn-success" type="submit" value="Add member">
-</form>
-</div>
-
-<div>
-<h4>Delete a member:</h4>
-<form action="/members/" method="POST">
-  <input type="hidden" name="_method" value="delete">
-  <select class="form-control width15" name="member">
-    <% @members.each do |member| %>
-      <option value=<%= member.username %>><%= member.username.capitalize %></option>
-    <% end %>
-  </select>
-  <input class="btn btn-danger" type="submit" value="Delete Member">
+  <div class="help-block with-errors"></div>
+  </div>
 </form>
 </div>
 
 <div>
 <h4>Manually update points</h4>
-<form action="/members/update" method="POST">
+<form data-toggle="validator" role="form" action="/members/update" method="POST">
+<div class="form-group with-feedback">
   <input type="hidden" name="_method" value="put">
     <select class="form-control width15" name="member">
       <% @members.each do |member| %>
         <option value=<%= member.username %>><%= member.username.capitalize %></option>
       <% end %>
     </select>
-    <input class="form-control width15"   type="text" name="points" placeholder="New Points Value">
+    <input class="form-control width15" type="text" name="points" placeholder="New Points Value" data-error="A Point value is required" required>
     <input class="btn btn-success" type="submit" value="Update Member">
+    <div class="help-block with-errors"></div>
+    </div>
 </form>
 </div>
 
@@ -58,6 +51,19 @@
     <option value="Admin">Admin</option>
   </select>
   <input class="btn btn-success" type="submit" value="Update Rank">
+</form>
+</div>
+
+<div>
+<h4>Delete a member:</h4>
+<form action="/members/" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <select class="form-control width15" name="member">
+    <% @members.each do |member| %>
+      <option value=<%= member.username %>><%= member.username.capitalize %></option>
+    <% end %>
+  </select>
+  <input class="btn btn-danger" type="submit" value="Delete Member">
 </form>
 </div>
 </center>

@@ -33,6 +33,10 @@ body {
   display: inline-block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .width15 {
   width: 15%;
   display: inline-block;

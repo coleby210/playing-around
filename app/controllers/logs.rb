@@ -48,3 +48,7 @@ post '/logs' do
   end
 end
 
+get "/logs/edit/:id" do
+  erb :"_edit-log", layout: false
+end
+

@@ -1,4 +1,4 @@
-  <h3>Log of Every Boss Run</h3>
+  <h3 id="start">Log of Every Boss Run</h3>
   <table class="table table-hover width80 center">
     <tr class="table_header">
       <td>Run ID</td>
@@ -8,6 +8,7 @@
       <td>Item Winner</td>
       <td>Date</td>
       <td>Kill Time (GMT)</td>
+      <% if admin? %><td>Edit</td><% end %>
     </tr>
     <% @runs.reverse.each do |run| %>
       <tr>
@@ -36,7 +37,7 @@
         <% end %>
         <td class="bg-info"><%= run.date.to_s %></td>
         <td class="bg-info"><%= run.time.to_s %></td>
+        <% if admin? %><td class="bg-danger"><a class="edit-button" href="/logs/edit/<%= run.id %>">Edit</a></td><% end %>
       </tr>
     <% end %>
   </table>
-  </form>

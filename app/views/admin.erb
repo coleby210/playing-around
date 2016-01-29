@@ -1,3 +1,7 @@
+<!-- Use partials. < %= erb :_whatever, layout: false %>
+Can use locals: { any_variable_in_partial: whatever_its_equal_to }
+< %= Locals go inside of this %> -->
+
 <% if admin? %>
 <br>
 <center>
@@ -27,6 +31,7 @@
     <select class="form-control width15" name="member">
       <% @members.each do |member| %>
         <option value=<%= member.username %>><%= member.username.capitalize %></option>
+        <!-- Change the value to member.id -->
       <% end %>
     </select>
     <input class="form-control width15" type="text" name="points" placeholder="New Points Value" data-error="A Point value is required" required>

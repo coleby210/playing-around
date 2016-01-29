@@ -29,7 +29,8 @@ delete '/members/' do
   end
 end
 
-put '/members/update' do
+put '/members/update' do #change this to members/
+  return (erb :error) unless admin?
   member = Member.where(username: params[:member])
   id = member.first.id
   if params[:points] && (params[:points].to_i >= 0)
@@ -40,5 +41,6 @@ put '/members/update' do
     redirect "/"
   else
     erb :error
+    #Make a get /error, that does erb :error, Fixes URL bar.
   end
 end

@@ -16,12 +16,3 @@ $(document).ready(function(){
     };
   });
 })
-
-function testcheck()
-{
-    if (!jQuery("#checkbox").is(":checked")) {
-        alert("You must select at least one user");
-        return false;
-    }
-    return true;
-}

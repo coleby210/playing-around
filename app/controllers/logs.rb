@@ -49,7 +49,12 @@ post '/logs' do
 end
 
 put "/logs" do
-  Run.update(params[:id], date: params[:date], time: params[:time])
+  run = Run.find(params[:id])
+  Run.update(run.id, date: params[:date], time: params[:time])
+  run.boss.name = params[:boss]
+  run.item.name = params[:item]
+  run.winner.username = params[:winner]
+  run.save
   redirect "/logs"
 end
 

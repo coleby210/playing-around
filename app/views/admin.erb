@@ -25,7 +25,7 @@ Can use locals: { any_variable_in_partial: whatever_its_equal_to }
 
 <div>
 <h4>Manually update points</h4>
-<form data-toggle="validator" role="form" action="/members/update" method="POST">
+<form data-toggle="validator" role="form" action="/members" method="POST">
 <div class="form-group with-feedback">
   <input type="hidden" name="_method" value="put">
     <select class="form-control width15" name="member">
@@ -43,7 +43,7 @@ Can use locals: { any_variable_in_partial: whatever_its_equal_to }
 
 <div>
 <h4>Update User's Rank</h4>
-<form action="/members/update" method="POST">
+<form action="/members" method="POST">
   <input type="hidden" name="_method" value="put">
   <select class="form-control width15" name="member">
     <% @members.each do |member| %>

@@ -74,3 +74,7 @@ body {
 .nomargin {
   margin: 0;
 }
+
+label {
+  display: block;
+}

@@ -48,7 +48,15 @@ post '/logs' do
   end
 end
 
+put "/logs" do
+  Run.update(params[:id], date: params[:date], time: params[:time])
+  redirect "/logs"
+end
+
 get "/logs/edit/:id" do
+  if params[:id]
+    @run = Run.find(params[:id])
+  end
   erb :"_edit-log", layout: false
 end
 

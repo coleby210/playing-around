@@ -1,7 +1,37 @@
-<div>
-  <form action="/logs/edit" method="POST">
-    <input type="hidden" name="_method" value="update">
-    <input type="text" name="whatever">
+<div class="padding">
+  <h4>You are editing run: <%= @run.id %></h4>
+  <p>You cannot add users to a pre-existing run. Everything else is editable.</p>
+  <form action="/logs" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="id" value=<%= @run.id %>>
+    <span style="display:inline-block">
+      <label for="boss">Boss:</label>
+      <input type="text" name="boss" value="<%= @run.boss.name %>">
+    </span>
+    <span style="display:inline-block">
+      <label for="item">Item:</label>
+      <% if @run.item %>
+        <input type="text" name="item" value="<%= @run.item.name %>">
+      <% else %>
+        <input type="text" name="item">
+      <% end %>
+    </span>
+    <span style="display:inline-block">
+      <label for="winner">Item Winner:</label>
+      <% if @run.winner %>
+        <input type="text" name="winner" value="<%= @run.winner.username.capitalize %>">
+      <% else %>
+        <input type="text" name="winner">
+      <% end %>
+    </span>
+    <span style="display:inline-block">
+      <label for="date">Date:</label>
+      <input type="date" name="date" value=<%= @run.date %>>
+    </span>
+    <span style="display:inline-block">
+      <label for="time">Time:</label>
+      <input type="time" name="time" value=<%= @run.time %>>
+    </span>
     <input type="submit" value="Edit Log">
   </form>
 </div>

@@ -14,12 +14,14 @@ get "/members/edit" do
 end
 
 post '/members' do
+  return (erb :error) unless admin?
   person = Member.create(username: params[:username].downcase, password_hash: params[:password], rank: params[:rank])
   person.save
   redirect '/'
 end
 
 delete '/members/' do
+  return (erb :error) unless admin?
   member = Member.where(username: params[:member])
   if member.first.id == 1
     redirect "/"
@@ -29,7 +31,7 @@ delete '/members/' do
   end
 end
 
-put '/members/update' do #change this to members/
+put '/members' do
   return (erb :error) unless admin?
   member = Member.where(username: params[:member])
   id = member.first.id

@@ -10,7 +10,7 @@
       <td>Kill Time (GMT)</td>
       <% if admin? %><td>Edit</td><% end %>
     </tr>
-    <% @runs.reverse.each do |run| %>
+    <% @runs.each do |run| %>
       <tr>
         <td class="bg-primary"><b><%= run.id.to_s %></b></td>
         <td class="bg-info"><%= run.boss.name %></td>

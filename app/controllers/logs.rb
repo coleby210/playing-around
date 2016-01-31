@@ -17,6 +17,7 @@ end
 get '/logs' do
   if logged_in?
     @runs = Run.all
+    @runs.to_a.sort! { |a,b| b.id <=> a.id }
     @parties = Party.all
     erb :logs
   else
@@ -50,10 +51,10 @@ end
 
 put "/logs" do
   run = Run.find(params[:id])
-  Run.update(run.id, date: params[:date], time: params[:time])
+  Run.update(params[:id], date: params[:date], time: params[:time])
   run.boss.name = params[:boss]
-  run.item.name = params[:item]
-  run.winner.username = params[:winner]
+  run.item.name = params[:item] if (params[:item] != "")
+  run.winner.username = params[:winner] if (params[:winner] != "")
   run.save
   redirect "/logs"
 end

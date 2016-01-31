@@ -53,9 +53,18 @@ put "/logs" do
   run = Run.find(params[:id])
   Run.update(params[:id], date: params[:date], time: params[:time])
   run.boss.name = params[:boss]
-  run.item.name = params[:item] if (params[:item] != "")
-  run.winner.username = params[:winner] if (params[:winner] != "")
-  run.save
+  run.boss.save
+  if (params[:item] != "")
+    run.item.name = params[:item]
+    run.item.save
+  end
+  if (params[:winner] != "")
+    winner = Member.where(username: params[:winner].downcase)[0]
+    if winner
+      run.drop.winner_id = winner.id
+      run.drop.save
+    end
+  end
   redirect "/logs"
 end
 

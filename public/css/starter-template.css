@@ -58,6 +58,10 @@ body {
   float: right;
 }
 
+.float_left {
+  float: left;
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;
@@ -81,4 +85,17 @@ label {
 
 .editor {
   padding-top: 10px;
+}
+
+.profile {
+  width: 30em;
+  margin: 0 auto;
+}
+
+.padding20 {
+  padding-top: 20px;
+}
+
+.margin5 {
+  margin-bottom: 5px;
 }

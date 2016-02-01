@@ -14,14 +14,14 @@ get "/members/edit" do
 end
 
 post '/members' do
-  return (erb :error) unless admin?
+  return (redirect "/error") unless admin?
   person = Member.create(username: params[:username].downcase, password_hash: params[:password], rank: params[:rank])
   person.save
   redirect '/'
 end
 
 delete '/members/' do
-  return (erb :error) unless admin?
+  return (redirect "/error") unless admin?
   member = Member.where(username: params[:member])
   if member.first.id == 1
     redirect "/"
@@ -42,7 +42,21 @@ put '/members' do
     Member.update(id, rank: params[:rank])
     redirect "/"
   else
-    erb :error
-    #Make a get /error, that does erb :error, Fixes URL bar.
+    redirect "/error"
+  end
+end
+
+get "/members/profile" do
+  @member = Member.find(session[:id])
+  erb :profile
+end
+
+post "/members/password_change" do
+  @member = Member.find(session[:id])
+  @member.password = params[:new_password]
+  if @member.save
+    redirect "/"
+  else
+    redirect "/error"
   end
 end

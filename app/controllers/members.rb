@@ -1,8 +1,6 @@
 get "/members/edit" do
   if logged_in?
-    @members = Member.all
-    @members = @members.sort_by &:current_points
-    @members.reverse!
+    @members = Member.all.sort_by(&:current_points).reverse
     if admin?
       erb :admin
     else
@@ -15,39 +13,37 @@ end
 
 post '/members' do
   return (redirect "/error") unless admin?
-  person = Member.create(username: params[:username].downcase, password_hash: params[:password], rank: params[:rank])
-  person.save
-  redirect '/'
-end
-
-delete '/members/' do
-  return (redirect "/error") unless admin?
-  member = Member.where(username: params[:member])
-  if member.first.id == 1
-    redirect "/"
-  else
-    Member.delete(member)
+  member = Member.create(username: params[:username].downcase, password_hash: params[:password], rank: params[:rank])
+  if member.save
     redirect '/'
-  end
-end
-
-put '/members' do
-  return (erb :error) unless admin?
-  member = Member.where(username: params[:member])
-  id = member.first.id
-  if params[:points] && (params[:points].to_i >= 0)
-    Member.update(id, current_points: params[:points])
-    redirect "/"
-  elsif params[:rank]
-    Member.update(id, rank: params[:rank])
-    redirect "/"
   else
     redirect "/error"
   end
 end
 
+delete '/members/' do
+  return (redirect "/error") unless admin?
+  if params[:member].to_i == 1
+    redirect "/error"
+  else
+    if Member.delete(params[:member])
+      redirect "/"
+    else
+      redirect "/error"
+    end
+  end
+end
+
+put '/members' do
+  return (erb :error) unless admin?
+  member = Member.find(params[:member].to_i)
+  update_member(member)
+end
+
 get "/members/profile" do
   @member = Member.find(session[:id])
+  @parties = Party.where(user_id: @member.id)
+
   erb :profile
 end
 

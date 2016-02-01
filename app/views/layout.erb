@@ -1,54 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="/css/normalize.css"> -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="/css/application.css"> -->
-  <link rel="stylesheet" href="/css/starter-template.css">
+  <link rel="stylesheet" href="/css/cole.css">
 
   <title>Cole's Point System</title>
 </head>
 <body>
-<div class="container">
+  <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top margin20">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="/" class="navbar-brand logo_pos">Cole's Point System</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav float_right">
-            <% if member? %>
-              <li><a href="/">Home</a></li>
-              <li><a href="/members/profile">Profile</a></li>
-              <% if council? %><li><a href="/logs/new">Boss Run Entry</a></li><% end %>
-              <li><a href="/items">Available Items</a></li>
-              <% if admin? %><li><a href="/members/edit">Admin Controls</a></li><% end %>
-              <li><a href="/logs">Boss Logs</a></li>
-              <li ><a href="/logout">Logout</a></li>
-            <% end %>
-          </ul>
-        </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand logo_pos">Cole's Point System</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav float_right">
+          <% if member? %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/members/profile">Profile</a></li>
+            <% if council? %><li><a href="/logs/new">Boss Run Entry</a></li><% end %>
+            <li><a href="/items">Available Items</a></li>
+            <% if admin? %><li><a href="/members/edit">Admin Controls</a></li><% end %>
+            <li><a href="/logs">Boss Logs</a></li>
+            <li ><a href="/logout">Logout</a></li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
   </div>
   <div class="starter-template">
-  <%= yield %>
+    <%= yield %>
   </div>
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="http://1000hz.github.io/bootstrap-validator/dist/validator.min.js"></script>
   <script src="/js/application.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>

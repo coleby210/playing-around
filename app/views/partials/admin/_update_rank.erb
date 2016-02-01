@@ -1,0 +1,11 @@
+<h4>Update User's Rank</h4>
+<form action="/members" method="POST">
+  <input type="hidden" name="_method" value="put">
+  <select class="form-control width15" name="member">
+    <%= erb :"/partials/admin/_each_member_dropdown" %>
+  </select>
+  <select class="form-control width15" name="rank">
+    <%= erb :"/partials/admin/_each_rank" %>
+  </select>
+  <input class="btn btn-success" type="submit" value="Update Rank">
+</form>

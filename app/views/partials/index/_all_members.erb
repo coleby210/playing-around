@@ -1,0 +1,6 @@
+<% @members.each do |member| %>
+  <tr>
+    <td class="bg-success"><%= member.username.capitalize %></td>
+    <td class="bg-info"><%= member.current_points.to_s %></td>
+  </tr>
+<% end %>

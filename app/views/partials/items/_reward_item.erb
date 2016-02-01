@@ -1,0 +1,21 @@
+<h3>Reward an item to a Player</h3>
+<form data-toggle="validator" role="form" action="/items" method="POST">
+  <div class="form-group">
+    <p>User:
+      <select class="form-control width15" name="member" required>
+        <% @members.each do |member| %>
+          <option value=<%= member.id %>><%= member.username.capitalize %></option>
+        <% end %>
+      </select>
+    </p>
+  </div>
+  <div class="form-group has-feedback">
+    <input class="form-control width20 center-form" type="text" name="run_id" placeholder="Run ID" data-error="Run ID is required" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group has-feedback">
+    <input class="form-control width20 center-form" type="text" name="points" placeholder="Point Cost" data-error="Point Cost is required" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <input class="btn btn-success" type="submit" value="Reward Player">
+</form>

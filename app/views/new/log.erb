@@ -1,61 +1,23 @@
 <% if council? %>
-<body onload=display_ct();>
-<script type="text/javascript">
-function display_c(){
-var refresh=1000; // Refresh rate in milli seconds
-mytime=setTimeout('display_ct()',refresh)
-}
+  <body onload=display_ct();>
+    <script type="text/javascript">
+      function display_c(){
+      var refresh=1000; // Refresh rate in milli seconds
+      mytime=setTimeout('display_ct()',refresh)
+      }
 
-function display_ct() {
-var strcount
-var x = new Date()
-var x1=x.toUTCString();// changing the display to UTC string
-document.getElementById('ct').innerHTML = x1;
-tt=display_c();
-}
-</script>
-<br>
-<center>
-<h3>Add some points:</h3>
-<form data-toggle="validator" role="form" class="padding" action="/logs" method="POST">
-  <div class="form-group">
-  <p class="control-label"><b>What boss was killed?</b>
-  <select name="boss" class="form-control width20" required>
-    <% @bosses.each do |boss| %>
-      <option value="<%= boss.name %>"><%= boss.name %></option>
-    <% end %>
-  </select>
-  </p>
-  </div>
-  <br>
-  <div class="form-group has-feedback">
-  <b>Who was there?</b>
-  <table class="table table-condensed width5">
-  <% @members.each do |member| %>
-    <tr>
-    <td>
-    <div class="checkbox nomargin">
-    <input type="checkbox" name="names[]" value=<%= member.username %>>
-    <%= member.username.capitalize %>
-    </div>
-    </td>
-    </tr>
-  <% end %>
-  </table></p>
-  <b><div class="help-block with-errors"></div></b>
-  </div>
-  <div class="form-group has-feedback">
-  <p><b>When was the boss killed?</b><br>
-  Current time: (<span id='ct' ></span>)</p>
-  <input class="date" type="date" name="date" data-error="A date or time is missing" required><input class="time" type="time" name="time" data-error="A date or time is missing" required></p>
-  <b><div class="help-block with-errors"></div></b>
-  </div>
-  <div class="form-group">
-  <p><b>What dropped?</b><br>
-  <input class="form-control width20" type="text" name="item"></p>
-  </div>
-  <input class="btn btn-success" type="submit" value="Submit Boss Run">
-</form>
-</center>
-</body>
+      function display_ct() {
+      var strcount
+      var x = new Date()
+      var x1=x.toUTCString();// changing the display to UTC string
+      document.getElementById('ct').innerHTML = x1;
+      tt=display_c();
+      }
+    </script>
+    <br>
+    <center>
+      <h3>Add some points:</h3>
+      <%= erb :"/partials/logs/_log_form" %>
+    </center>
+  </body>
 <% end %>

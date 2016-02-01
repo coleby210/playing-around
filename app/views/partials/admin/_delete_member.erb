@@ -1,0 +1,8 @@
+<h4>Delete a member:</h4>
+<form action="/members/" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <select class="form-control width15" name="member">
+    <%= erb :"/partials/admin/_each_member_dropdown" %>
+  </select>
+  <input class="btn btn-danger" type="submit" value="Delete Member">
+</form>

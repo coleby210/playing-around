@@ -1,75 +1,21 @@
-<!-- Use partials. < %= erb :_whatever, layout: false %>
-Can use locals: { any_variable_in_partial: whatever_its_equal_to }
-< %= Locals go inside of this %> -->
-
 <% if admin? %>
-<br>
-<center>
-<h3>Admin Powers</h3>
-<div>
-<h4>Add a new member</h4>
-<form data-toggle="validator" role="form" action="/members" method="POST">
-<div class="form-group with-feedback">
-  <input class="form-control width15" type="text" name="username" placeholder="Username" data-error="Username Required" required>
-  <input class="form-control width15" type="password" name="password" placeholder="Password" data-error="Password Required" required>
-  <select class="form-control width15" name="rank">
-    <option value="Member">Member</option>
-    <option value="Council">Council</option>
-    <option value="Admin">Admin</option>
-  </select>
-  <input class="btn btn-success" type="submit" value="Add member">
-  <div class="help-block with-errors"></div>
-  </div>
-</form>
-</div>
-
-<div>
-<h4>Manually update points</h4>
-<form data-toggle="validator" role="form" action="/members" method="POST">
-<div class="form-group with-feedback">
-  <input type="hidden" name="_method" value="put">
-    <select class="form-control width15" name="member">
-      <% @members.each do |member| %>
-        <option value=<%= member.username %>><%= member.username.capitalize %></option>
-        <!-- Change the value to member.id -->
-      <% end %>
-    </select>
-    <input class="form-control width15" type="text" name="points" placeholder="New Points Value" data-error="A Point value is required" required>
-    <input class="btn btn-success" type="submit" value="Update Member">
-    <div class="help-block with-errors"></div>
+  <br>
+  <div class="center">
+    <h3>Admin Powers</h3>
+    <div>
+      <%= erb :"/partials/admin/_add_member" %>
     </div>
-</form>
-</div>
 
-<div>
-<h4>Update User's Rank</h4>
-<form action="/members" method="POST">
-  <input type="hidden" name="_method" value="put">
-  <select class="form-control width15" name="member">
-    <% @members.each do |member| %>
-      <option value=<%= member.username %>><%= member.username.capitalize %></option>
-    <% end %>
-   </select>
-  <select class="form-control width15" name="rank">
-    <option value="Member">Member</option>
-    <option value="Council">Council</option>
-    <option value="Admin">Admin</option>
-  </select>
-  <input class="btn btn-success" type="submit" value="Update Rank">
-</form>
-</div>
+    <div>
+      <%= erb :"/partials/admin/_update_points" %>
+    </div>
 
-<div>
-<h4>Delete a member:</h4>
-<form action="/members/" method="POST">
-  <input type="hidden" name="_method" value="delete">
-  <select class="form-control width15" name="member">
-    <% @members.each do |member| %>
-      <option value=<%= member.username %>><%= member.username.capitalize %></option>
-    <% end %>
-  </select>
-  <input class="btn btn-danger" type="submit" value="Delete Member">
-</form>
-</div>
-</center>
+    <div>
+      <%= erb :"/partials/admin/_update_rank" %>
+    </div>
+
+    <div>
+      <%= erb :"/partials/admin/_delete_member" %>
+    </div>
+  </div>
 <% end %>

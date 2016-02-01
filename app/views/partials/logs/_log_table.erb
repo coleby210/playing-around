@@ -1,0 +1,15 @@
+<table class="table table-hover width80 center">
+  <tr class="table_header">
+    <td>Run ID</td>
+    <td>Boss Killed</td>
+    <td>Party Size</td>
+    <td>Item Dropped</td>
+    <td>Item Winner</td>
+    <td>Date</td>
+    <td>Kill Time (GMT)</td>
+    <% if admin? %>
+      <td>Edit</td>
+    <% end %>
+  </tr>
+  <%= erb :"/partials/logs/_all_runs" %>
+</table>

@@ -1,4 +1,4 @@
-<center>
+<div class="center-form">
   <table class="table table-hover width80 center">
     <h3>Available Items</h3>
     <tr>
@@ -9,40 +9,9 @@
       <td>Date</td>
       <td>Time (GMT)</td>
     </tr>
-    <% @runs.reverse.each do |run| %>
-    <% if run.winner.nil? && run.item.name != "" %>
-      <tr>
-        <td class="bg-primary"><b><%= run.id.to_s %></b></td>
-        <td class="bg-info"><%= run.boss.name %></td>
-        <td class="bg-success"><%= run.item.name.capitalize %></td>
-        <td class="bg-danger">Unclaimed</td>
-        <td class="bg-info"><%= run.date.to_s %></td>
-        <td class="bg-info"><%= run.time.to_s %></td>
-      </tr>
-      <% end %>
-    <% end %>
+    <%= erb :"/partials/items/_all_runs" %>
   </table>
-    <% if council? %>
-    <h3>Reward an item to a Player</h3>
-    <form data-toggle="validator" role="form" action="/items" method="POST">
-    <div class="form-group">
-    <p>User:
-    <select class="form-control width15" name="member" required>
-      <% @members.each do |member| %>
-        <option value=<%= member.username %>><%= member.username.capitalize %></option>
-      <% end %>
-    </select></p>
-    </div>
-    <div class="form-group has-feedback">
-    <p><input class="form-control width20" type="text" name="run_id" placeholder="Run ID" data-error="Run ID is required" required></p>
-    <div class="help-block with-errors"></div>
-    </div>
-    <div class="form-group has-feedback">
-    <p><input class="form-control width20" type="text" name="points" placeholder="Point Cost" data-error="Point Cost is required" required></p>
-    <div class="help-block with-errors"></div>
-    </div>
-    <input class="btn btn-success" type="submit" value="Reward Player">
-  </p>
-</form>
+  <% if council? %>
+    <%= erb :"/partials/items/_reward_item" %>
   <% end %>
-</center>
+</div>

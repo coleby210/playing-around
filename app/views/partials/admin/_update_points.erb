@@ -1,0 +1,12 @@
+<h4>Manually update points</h4>
+<form data-toggle="validator" role="form" action="/members" method="POST">
+<div class="form-group with-feedback">
+  <input type="hidden" name="_method" value="put">
+    <select class="form-control width15" name="member">
+      <%= erb :"/partials/admin/_each_member_dropdown" %>
+    </select>
+    <input class="form-control width15" type="text" name="points" placeholder="New Points Value" data-error="A Point value is required" required>
+    <input class="btn btn-success" type="submit" value="Update Member">
+    <div class="help-block with-errors"></div>
+    </div>
+</form>

@@ -1,9 +1,7 @@
 get "/logs/new" do
   if logged_in?
     if council?
-      @members = Member.all
-      @members = @members.sort_by &:current_points
-      @members.reverse!
+      @members = Member.all.sort_by(&:current_points).reverse
       @bosses = Boss.all
       erb :"/new/log"
     else
@@ -16,8 +14,7 @@ end
 
 get '/logs' do
   if logged_in?
-    @runs = Run.all
-    @runs.to_a.sort! { |a,b| b.id <=> a.id }
+    @runs = Run.all.to_a.sort_by(&:id).reverse
     @parties = Party.all
     erb :logs
   else
@@ -26,52 +23,39 @@ get '/logs' do
 end
 
 post '/logs' do
-  if params[:names]
-    boss = Boss.where(name: params[:boss]).first
-    item = Item.create(name: params[:item])
-    drop = Drop.create(item_id: item.id, point_cost: 0)
-    run = Run.create(boss_id: boss.id, drop_id: drop.id, date: params[:date], time: params[:time])
-
-    params[:names].each do |user|
-      object = Member.where(username: user)
-      id = object.first.id
-      value = object.first.current_points
-      Party.create(run_id: run.id, member_id: id)
-      if object.first.daily_point_bonus
-        Member.update(id, current_points: (100 + value), daily_point_bonus: false)
-      else
-        Member.update(id, current_points: (10 + value))
-      end
+  if council?
+    if params[:names]
+      run = create_run
+      each_user(run.id)
+      redirect '/'
+    else
+      redirect "/error"
     end
-    redirect '/'
   else
-    erb :error
+    redirect "/"
   end
 end
 
 put "/logs" do
-  run = Run.find(params[:id])
-  Run.update(params[:id], date: params[:date], time: params[:time])
-  run.boss.name = params[:boss]
-  run.boss.save
-  if (params[:item] != "")
-    run.item.name = params[:item]
-    run.item.save
+  if admin?
+    run = Run.find(params[:id])
+    Run.update(params[:id], date: params[:date], time: params[:time])
+    item_exists(run)
+    winner_exists(run)
+    redirect "/logs"
+  else
+    redirect "/"
   end
-  if (params[:winner] != "")
-    winner = Member.where(username: params[:winner].downcase)[0]
-    if winner
-      run.drop.winner_id = winner.id
-      run.drop.save
-    end
-  end
-  redirect "/logs"
 end
 
 get "/logs/edit/:id" do
-  if params[:id]
-    @run = Run.find(params[:id])
+  if admin?
+    if params[:id]
+      @run = Run.find(params[:id])
+    end
+    erb :"/partials/logs/_edit-log", layout: false
+  else
+    redirect "/"
   end
-  erb :"_edit-log", layout: false
 end
 

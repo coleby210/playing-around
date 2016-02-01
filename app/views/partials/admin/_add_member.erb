@@ -1,0 +1,12 @@
+<h4>Add a new member</h4>
+<form data-toggle="validator" role="form" action="/members" method="POST">
+  <div class="form-group with-feedback">
+    <input class="form-control width15" type="text" name="username" placeholder="Username" data-error="Username Required" required>
+    <input class="form-control width15" type="password" name="password" placeholder="Password" data-error="Password Required" required>
+    <select class="form-control width15" name="rank">
+      <%= erb :"/partials/admin/_each_rank" %>
+    </select>
+    <input class="btn btn-success" type="submit" value="Add member">
+    <div class="help-block with-errors"></div>
+  </div>
+</form>

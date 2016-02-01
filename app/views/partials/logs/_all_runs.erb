@@ -1,0 +1,32 @@
+<% @runs.each do |run| %>
+  <tr>
+    <td class="bg-primary"><b><%= run.id.to_s %></b></td>
+    <td class="bg-info"><%= run.boss.name %></td>
+    <% if @parties.where(run_id: run.id).length <= 2 %>
+      <td class="bg-danger"><%= @parties.where(run_id: run.id).length %></td>
+    <% elsif @parties.where(run_id: run.id).length <= 5 %>
+      <td class="bg-warning"><%= @parties.where(run_id: run.id).length %></td>
+    <% else %>
+      <td class="bg-success"><%= @parties.where(run_id: run.id).length %></td>
+    <% end %>
+    <% if run.item.name != "" %>
+      <td class="bg-success"><%= run.item.name.capitalize %></td>
+    <% else %>
+      <td class="bg-warning">Nothing</td>
+    <% end %>
+    <% if run.winner %>
+      <td class="bg-success"><%= run.winner.username.capitalize  %></td>
+    <% else %>
+      <% if run.item.name == "" %>
+        <td class="bg-warning">No Item</td>
+      <% else %>
+        <td class="bg-danger">Unclaimed</td>
+      <% end %>
+    <% end %>
+    <td class="bg-info"><%= run.date.to_s %></td>
+    <td class="bg-info"><%= run.time.to_s %></td>
+    <% if admin? %>
+      <td class="bg-danger"><a class="edit-button" href="/logs/edit/<%= run.id %>">Edit</a></td>
+    <% end %>
+  </tr>
+<% end %>

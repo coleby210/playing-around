@@ -7,6 +7,9 @@ $(document).ready(function(){
       url: url
     }).done(function(response){
       $("#start").html(response);
+      $(function() {
+        $('body').scrollTop(0);
+      });
     });
   });
 })

@@ -104,6 +104,10 @@ label {
   margin: 0 auto;
 }
 
+.width11em {
+  width: 11em;
+}
+
 .width25em {
   width: 25em;
 }

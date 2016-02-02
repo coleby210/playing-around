@@ -6,32 +6,32 @@
     <input type="hidden" name="id" value=<%= @run.id %>>
     <span style="display:inline-block">
       <label for="boss">Boss:</label>
-      <input type="text" name="boss" value="<%= @run.boss.name %>" disabled>
+      <input class="form-control" type="text" name="boss" value="<%= @run.boss.name %>" disabled>
     </span>
     <span style="display:inline-block">
       <label for="item">Item:</label>
       <% if @run.item %>
-        <input type="text" name="item" value="<%= @run.item.name %>">
+        <input class="form-control" type="text" name="item" value="<%= @run.item.name %>">
       <% else %>
-        <input type="text" name="item">
+        <input class="form-control" type="text" name="item">
       <% end %>
     </span>
     <span style="display:inline-block">
       <label for="winner">Item Winner:</label>
       <% if @run.winner %>
-        <input type="text" name="winner" value="<%= @run.winner.username.capitalize %>">
+        <input class="form-control" type="text" name="winner" value="<%= @run.winner.username.capitalize %>">
       <% else %>
-        <input type="text" name="winner">
+        <input class="form-control" type="text" name="winner">
       <% end %>
     </span>
     <span style="display:inline-block">
       <label for="date">Date:</label>
-      <input type="date" name="date" value=<%= @run.date %>>
+      <input class="form-control width11em date" type="date" name="date" value=<%= @run.date %>>
     </span>
     <span style="display:inline-block">
       <label for="time">Time:</label>
-      <input type="time" name="time" value=<%= @run.time %>>
+      <input class="form-control time" type="time" name="time" value=<%= @run.time %>>
     </span>
-    <input type="submit" value="Edit Log">
+    <input class="btn btn-success" type="submit" value="Edit Log">
   </form>
 </div>

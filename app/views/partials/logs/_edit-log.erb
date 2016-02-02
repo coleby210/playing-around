@@ -1,7 +1,7 @@
 <div class="editor">
   <h4>You are editing run: <%= @run.id %></h4>
   <p>You cannot add users to a pre-existing run. Everything else is editable.</p>
-  <form action="/logs" method="POST">
+  <form role="form"action="/logs" method="POST">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="id" value=<%= @run.id %>>
     <span style="display:inline-block">

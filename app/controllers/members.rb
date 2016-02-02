@@ -43,8 +43,10 @@ end
 get "/members/profile" do
   @member = Member.find(session[:id])
   @parties = Party.all
-  @run_ids = get_run_ids(@member)
-  @runs = get_runs_array(@run_ids)
+  if (Party.where(member_id: member.id).length > 0)
+    @run_ids = get_run_ids(@member)
+    @runs = get_runs_array(@run_ids)
+  end
   erb :profile
 end
 

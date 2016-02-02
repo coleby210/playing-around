@@ -14,15 +14,15 @@ $(document).ready(function(){
   });
 })
 
-function validate_form()  {
-  valid = true;
+// function validate_form()  {
+//   valid = true;
 
-  if($('input[type=checkbox]:checked').length == 0) {
-    alert ( "ERROR! You must select atleast one member!" );
-    valid = false;
-  };
-  return valid;
-};
+//   if($('input[type=checkbox]:checked').length == 0) {
+//     alert ( "ERROR! You must select atleast one member!" );
+//     valid = false;
+//   };
+//   return valid;
+// };
 
 // $('#run_table').jscroll({
 //     nextSelector: 'tr',

@@ -10,3 +10,13 @@ $(document).ready(function(){
     });
   });
 })
+
+function validate_form()  {
+  valid = true;
+
+  if($('input[type=checkbox]:checked').length == 0) {
+    alert ( "ERROR! You must select atleast one member!" );
+    valid = false;
+  };
+  return valid;
+};

@@ -104,6 +104,9 @@ label {
   margin: 0 auto;
 }
 
+.width25em {
+  width: 25em;
+}
 .padding20 {
   padding-top: 20px;
 }

@@ -1,4 +1,4 @@
-<form data-toggle="validator" role="form" class="padding" action="/logs" method="POST">
+<form data-toggle="validator" role="form" class="padding" action="/logs" method="POST" onsubmit="return validate_form();">
   <div class="form-group">
     <p class="control-label"><b>What boss was killed?</b>
       <select name="boss" class="form-control width20" required>
@@ -11,16 +11,19 @@
   <br>
   <div class="form-group has-feedback">
     <b>Who was there?</b>
-    <table class="table table-condensed width5">
-      <% @members.each do |member| %>
-        <tr>
+    <table class="table table-condensed width25em">
+      <tr>
+      <% @members.each_with_index do |member, index| %>
+        <% if index % 3 == 0 %>
+          </tr><tr>
+        <% end %>
           <td>
             <div class="checkbox nomargin">
               <input type="checkbox" name="names[]" value=<%= member.id %>><%= member.username.capitalize %>
             </div>
           </td>
-        </tr>
       <% end %>
+      </tr>
     </table>
     <b><div class="help-block with-errors"></div></b>
   </div>
@@ -34,5 +37,5 @@
     <p><b>What dropped?</b><br>
     <input class="form-control width20" type="text" name="item"></p>
   </div>
-  <input class="btn btn-success" type="submit" value="Submit Boss Run">
+  <input id="submit-run" class="btn btn-success" type="submit" value="Submit Boss Run">
 </form>

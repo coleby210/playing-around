@@ -1,4 +1,6 @@
 body {
+  background-image: url("/lightpaperfibers.png");
+  background-repeat: repeat;
   padding-top: 20px;
 }
 
@@ -104,8 +106,23 @@ label {
   margin: 0 auto;
 }
 
+.width13em {
+  width: 13em;
+  display: inline-block;
+}
+
+.width12em {
+  width: 12em;
+  display: inline-block;
+}
+
 .width11em {
   width: 11em;
+}
+
+.width8em {
+  width: 8em;
+  display: inline-block;
 }
 
 .width25em {
@@ -117,4 +134,12 @@ label {
 
 .margin5 {
   margin-bottom: 5px;
+}
+
+.font16 {
+  font-size: 16px;
+}
+
+.padding-right12 {
+  padding-right: 12px !important;
 }

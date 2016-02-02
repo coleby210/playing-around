@@ -1,0 +1,24 @@
+<meta http-equiv="refresh" content="60">
+<div class="center">
+<h3>Boss Timers</h3>
+<table class="table table-hover center width40">
+  <tr class="table_header active">
+    <td>Boss Name</td>
+    <td>Status</td>
+  </tr>
+<% @bosses.each do |boss, time_left| %>
+  <tr>
+  <% if time_left.is_a?(String) %>
+    <td class="bg-info"><%= boss %></td>
+    <% if time_left == "Might have been killed" %>
+      <td class="bg-danger"><strong><%= time_left %></strong></td>
+    <% else %>
+      <td class="bg-success"><strong class="font16">In spawn window</strong></td>
+    <% end %>
+  <% else %>
+    <td class="bg-info"><%= boss %></td>
+    <td class="bg-warning"><%= time_left[0] %> hour(s) and <%= time_left[1] %> minute(s) remaining.</td>
+  <% end %>
+  </tr>
+<% end %>
+</div>

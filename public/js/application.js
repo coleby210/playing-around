@@ -20,3 +20,9 @@ function validate_form()  {
   };
   return valid;
 };
+
+// $('#run_table').jscroll({
+//     nextSelector: 'tr',
+//     contentSelector: 'tr',
+//     autoTrigger: false
+// });

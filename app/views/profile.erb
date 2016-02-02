@@ -8,7 +8,7 @@
     <%= erb :"/partials/profile/_password_change" %>
   </div>
 </div>
-<% if @run_ids.length > 0 %>
+<% if @can_run %>
   <h4 class="clear_both padding20">Runs you were a part of: <%= @run_ids.length %></h4>
   <%= erb :"/partials/profile/_profile_logs" %>
 <% end %>

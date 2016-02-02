@@ -43,7 +43,7 @@ end
 get "/members/profile" do
   @member = Member.find(session[:id])
   @parties = Party.all
-  if (Party.where(member_id: member.id).length > 0)
+  if (Party.where(member_id: @member.id).length > 0)
     @run_ids = get_run_ids(@member)
     @runs = get_runs_array(@run_ids)
   end

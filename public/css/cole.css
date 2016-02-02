@@ -2,6 +2,14 @@ body {
   padding-top: 20px;
 }
 
+.clear_both {
+  clear: both;
+}
+
+.margin-bottom0 {
+  margin-bottom: 0px
+}
+
 .margin20 {
   margin-bottom: 20px;
   display: block;
@@ -92,7 +100,7 @@ label {
 }
 
 .profile {
-  width: 30em;
+  width: 40em;
   margin: 0 auto;
 }
 

@@ -20,4 +20,20 @@ helpers do
     end
   end
 
+  def get_run_ids(member)
+    party = Party.where(member_id: member.id)
+    run_ids = []
+    party.each do |party|
+      run_ids << party.run_id
+    end
+    return run_ids
+  end
+
+  def get_runs_array(ids_array)
+    runs = []
+    ids_array.each do |run_id|
+      runs << Run.find(run_id)
+    end
+    runs = runs.sort_by(&:id).reverse
+  end
 end
